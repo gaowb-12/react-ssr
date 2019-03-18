@@ -4,7 +4,9 @@ import {connect} from "react-redux";
 import { getHomeList } from "./store/actions";
 class Home extends Component{
     componentDidMount(){
-        this.props.getHomeList()
+        console.log(this.props.list.length)
+        if(!this.props.list.length)
+            this.props.getHomeList()
     }
     render(){
         return (

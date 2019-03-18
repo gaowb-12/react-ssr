@@ -12,4 +12,15 @@ const getStore=()=>{
                 applyMiddleware(thunk)
             )
     }
-export default getStore
+const getClientStore=()=>{
+    const defaultState=window.context.state
+    return createStore(
+                reducer,
+                defaultState,
+                applyMiddleware(thunk)
+            )
+    }
+export{
+    getClientStore,
+    getStore
+}

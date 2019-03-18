@@ -14,12 +14,19 @@ export const render=(store,routes,req)=>{
             </StaticRouter>
         </Provider>
     ))
+    console.log(store.getState)
     return `<html>
                 <head>
                     <title>hello</title>
                 </head>
                 <body>
                     <div id="root">${content}</div>
+                    <script>
+                        // 数据注水（在服务端直接把数据传给客户端）
+                        window.context={
+                            state:${JSON.stringify(store.getState())}
+                        }
+                    </script>
                     <script src="/index.js"></script>
                 </body>
             </html>`
